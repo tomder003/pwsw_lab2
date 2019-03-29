@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MacierzeTomek
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Podaj wymiar macierzy:");
+            String wymiar = Console.ReadLine();
+            int wymiarmacierzy;
+            wymiarmacierzy = int.Parse(wymiar);
+            int[,] tablica1 = new int[wymiarmacierzy, wymiarmacierzy];
+            Random rand = new Random();
+            //uzupełełnienie tablicy1
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int a = 0; a < wymiarmacierzy; a++)
+                {
+                    tablica1[i, a] = rand.Next(-10, 10);
+                }
+
+            }
+            //uzupełełnienie tablicy2
+            int[,] tablica2 = new int[wymiarmacierzy, wymiarmacierzy];
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int a = 0; a < wymiarmacierzy; a++)
+                {
+                    tablica2[i, a] = rand.Next(-10, 10);
+                }
+
+            }
+
+            //suma
+            int[,] sumamacierzy = new int[wymiarmacierzy, wymiarmacierzy];
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int a = 0; a < wymiarmacierzy; a++)
+                {
+                    sumamacierzy[i, a] = tablica1[i, a] + tablica2[i, a];
+                }
+            }
+            //roznica
+            int[,] roznicamacierzy = new int[wymiarmacierzy, wymiarmacierzy];
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int a = 0; a < wymiarmacierzy; a++)
+                {
+                    roznicamacierzy[i, a] = tablica1[i, a] - tablica2[i, a];
+                }
+            }
+            //mnozenie
+            int[,] iloczynmacierzy = new int[wymiarmacierzy, wymiarmacierzy];
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int a = 0; a < wymiarmacierzy; a++)
+                {
+                    int suma = 0;
+                    for (int k = 0; k < wymiarmacierzy; k++)
+                    {
+                        suma = suma + (tablica1[i, k] * tablica2[k, a]);
+                    }
+                    iloczynmacierzy[i, a] = suma;
+                }
+
+            }
+            //Wypisanie macierzy
+            Console.WriteLine("Pierwsza macierz: ");
+            
+
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int j = 0; j < wymiarmacierzy; j++)
+                {
+                    Console.Write(tablica1[i, j] + "\t");
+                }
+                Console.Write("\n");
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Druga macierz: ");
+            
+            Console.WriteLine("");
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int j = 0; j < wymiarmacierzy; j++)
+                {
+                    Console.Write(tablica2[i, j] + "\t");
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("Dodane macierze: ");
+            
+            Console.WriteLine("");
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int j = 0; j < wymiarmacierzy; j++)
+                {
+                    Console.Write(sumamacierzy[i, j] + "\t");
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("Odjęte macierze: ");
+            
+            Console.WriteLine("");
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int j = 0; j < wymiarmacierzy; j++)
+                {
+                    Console.Write(roznicamacierzy[i, j] + "\t");
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("Pomnożone macierze: ");
+            
+            for (int i = 0; i < wymiarmacierzy; i++)
+            {
+                for (int j = 0; j < wymiarmacierzy; j++)
+                {
+                    Console.Write(iloczynmacierzy[i, j] + "\t");
+                }
+                Console.Write("\n");
+            }
+            Console.ReadKey();
+        }
+    }
+}
